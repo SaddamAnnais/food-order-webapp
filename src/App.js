@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import ListMenuItem from "./components/Menu/ListMenuItem";
+import About from "./components/About/About";
+
+const data = [
+  {
+    title: "Klepon",
+    desc: "klepon asli magelang, isi gula jawa dan sprinled kelapa",
+    price: 5,
+  },
+  {
+    title: "Ayam penyet",
+    desc: "ayam oenyet madura kesukaan yara, isi ayam dan sambel penyet",
+    price: 18,
+  },
+];
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <About />
+      <ListMenuItem foodData={data} />
     </div>
   );
 }
