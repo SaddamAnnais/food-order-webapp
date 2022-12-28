@@ -10,7 +10,7 @@ const Card = styled.div`
   box-shadow: 0px 7px 5px 0px black;
   border-radius: 1em;
 
-  @media (min-width:800px) {
+  @media (min-width:720px) {
     width: ${props => props.width || '90%'};
   }
 
