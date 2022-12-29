@@ -37,7 +37,7 @@ const MenuWrapper = styled.div`
 
 `;
 
-const ItemMenu = (props) => {
+const MenuItem = (props) => {
   return (
     <MenuWrapper>
       <div className="item-menu left">
@@ -60,4 +60,4 @@ const ItemMenu = (props) => {
   );
 };
 
-export default ItemMenu;
+export default MenuItem;

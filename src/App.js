@@ -1,8 +1,7 @@
 import "./App.css";
 import ListMenuItem from "./components/Menu/ListMenuItem";
-import About from "./components/Header/About";
-import Navbar from "./components/Header/Navbar";
 import Header from "./components/Header/Header";
+import ListCartItem from "./components/CartModal/ListCartItem";
 
 const data = [
   {
@@ -46,6 +45,7 @@ const data = [
 function App() {
   return (
     <div className="App">
+      <ListCartItem />
       <Header />
       <ListMenuItem foodData={data} />
     </div>

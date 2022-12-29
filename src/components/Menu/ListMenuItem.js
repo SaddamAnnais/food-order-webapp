@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import ItemMenu from "./ItemMenu";
+import MenuItem from "./MenuItem";
 import Card from "../UI/Card";
 
 const Control = styled.div`
@@ -17,6 +17,7 @@ const Control = styled.div`
   animation-name: animate;
   animation-duration: 1s;
   animation-fill-mode: forwards;
+  padding-bottom: 3em;
 `;
 
 const ListMenuItem = (props) => {
@@ -25,7 +26,7 @@ const ListMenuItem = (props) => {
       <Card width="720px">
         {props.foodData.map((food) => {
           return (
-            <ItemMenu
+            <MenuItem
               title={food.title}
               desc={food.desc}
               price={food.price}

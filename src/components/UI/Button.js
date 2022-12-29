@@ -2,10 +2,13 @@ import styled from "styled-components";
 
 const Button = styled.button`
   padding: 0.6em 2em;
-  background-color: #85221b;
+  background-color: ${props => props.BGColor || '#85221b'};
+  color: ${props => props.color || 'white'};;
+  border: ${props => props.border || 'none'};
   border-radius :1.5em;
-  color: white;
-  border-style: none;
+  &:hover {
+  background-color: ${props => props.BGColorHover || '#661a14'};
+}
 `
 
 export default Button
