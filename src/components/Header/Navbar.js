@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Button from "../UI/Button";
 
@@ -29,8 +29,8 @@ const Nav = styled.nav`
     margin: 1em 0;
     margin-right: 1rem;
     display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+    flex-direction: row;
+    justify-content: space-evenly;
   }
 
   Button p {
@@ -50,20 +50,49 @@ const Nav = styled.nav`
       margin-left: 13rem;
     }
   }
+
+  @keyframes animate {
+    from {
+      opacity: 0;
+      transform: translateY(10%);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  animation-name: ${(props) => props.onclick || " "};
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
 `;
 
+const sumCart = (cart) => {
+  let sum = 0;
+  for (let i = 0; i < cart.length; i++) {
+    sum += cart[i].amount;
+  }
+  return sum;
+};
+
 const Navbar = (props) => {
-  const [cartAmount, setCartAmount] = useState(0);
+  const [numCart, setNumCart] = useState(0);
+  // setNumCart(props.cart.length);
+  const num = sumCart(props.cart);
+
+  useEffect(() => {
+    setNumCart(num);
+  }, [num]);
 
   return (
     <Nav>
       <h1>
         <b>RM YaraSiHot</b>
       </h1>
-      <ul class="main-nav">
-        <Button>
+      <ul className="main-nav">
+        <Button className="cart-button" onclick='animate'>
           <p>🛒 Your Cart</p>
-          <p className="cart-amount">{cartAmount}</p>
+          <p className="cart-amount">{numCart}</p>
         </Button>
       </ul>
     </Nav>

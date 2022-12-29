@@ -2,8 +2,6 @@ import { createPortal } from "react-dom";
 import styled from "styled-components";
 
 
-
-
 const Overlay = styled.div`
 
   margin: 0;
@@ -14,6 +12,7 @@ const Overlay = styled.div`
   position: absolute;
   display: ${(props) => (props.hide ? "none" : "block")};
 `;
+
 
 const Modal = (props) => {
   return createPortal(

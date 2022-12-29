@@ -21,6 +21,10 @@ const Control = styled.div`
 `;
 
 const ListMenuItem = (props) => {
+  const toCartHandler = event => {  
+    props.toCart(event);
+  }
+
   return (
     <Control>
       <Card width="720px">
@@ -31,6 +35,7 @@ const ListMenuItem = (props) => {
               desc={food.desc}
               price={food.price}
               key={food.id}
+              toCart={toCartHandler}
             />
           );
         })}

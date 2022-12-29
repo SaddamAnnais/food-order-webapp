@@ -7,7 +7,7 @@ const Button = styled.button`
   border: ${props => props.border || 'none'};
   border-radius :1.5em;
   &:hover {
-  background-color: ${props => props.BGColorHover || '#661a14'};
+  background-color: ${props => props.BGColorHover || 'rgba(96, 25, 0, 1)'};
 }
 `
 

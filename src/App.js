@@ -2,6 +2,7 @@ import "./App.css";
 import ListMenuItem from "./components/Menu/ListMenuItem";
 import Header from "./components/Header/Header";
 import ListCartItem from "./components/CartModal/ListCartItem";
+import { useState } from "react";
 
 const data = [
   {
@@ -43,11 +44,27 @@ const data = [
 ];
 
 function App() {
+  const [cart, setCart] = useState([]);
+
+  const addToCartHandler = (event) => {
+    setCart((prevState) => {
+      for (let i = 0; i < prevState.length; i++) {
+        if (prevState[i].name === event.name) {
+          let newCart = [...prevState];
+          newCart[i].amount = newCart[i].amount + event.amount;
+          return newCart;
+        }
+      }
+      const newElmtCart = { ...event, id: prevState.length };
+      const newCart = [...prevState, newElmtCart];
+      return newCart;
+    });
+  };
+
   return (
     <div className="App">
-      <ListCartItem />
-      <Header />
-      <ListMenuItem foodData={data} />
+      <Header cart={cart}/>
+      <ListMenuItem foodData={data} toCart={addToCartHandler} />
     </div>
   );
 }

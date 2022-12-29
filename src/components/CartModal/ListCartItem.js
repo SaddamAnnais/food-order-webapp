@@ -68,17 +68,13 @@ const Control = styled.div`
   }
 `;
 
-const GlobalStyle = createGlobalStyle`
-  body {
-    overflow: hidden;
-  }
-    
-`
+
+
 
 const ListCartItem = (props) => {
   return (
     <Modal>
-      <GlobalStyle />
+      {/* <GlobalStyle /> */}
       <Control>
         <Card width="480px" shadow=" " maxHeight="33em" overflow="scroll">
           {cartData.map((cart) => {

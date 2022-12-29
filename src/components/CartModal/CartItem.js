@@ -45,6 +45,10 @@ h2 {
 `;
 
 const CartItem = (props) => {
+
+
+
+
   return (
     <Control>
       <div className="item-cart left">
