@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import formatNumber from "../UI/formatNumber";
 
 const Control = styled.div`
   display: flex;
@@ -6,7 +7,7 @@ const Control = styled.div`
   border-bottom: 3px solid #85221b;
 
   & .item-cart.left {
-    width: 30%;
+    width: 37%;
   } 
 
   & .item-cart.right {
@@ -46,21 +47,18 @@ h2 {
 
 const CartItem = (props) => {
 
-
-
-
   return (
     <Control>
       <div className="item-cart left">
         <h2>{props.data.name}</h2>
         <div className="price-amount">
-          <p className="price"><b>${props.data.price}</b></p>
+          <p className="price"><b>Rp{formatNumber(props.data.price)}</b></p>
           <p className="amount">x {props.data.amount}</p>
         </div>
       </div>
       <div className="item-cart right">
-        <button className="inc-dec">+</button>
-        <button className="inc-dec">-</button>
+        <button className="inc-dec" onClick={() => props.updateCart({type: 'INC', id: props.data.id})}>+</button>
+        <button className="inc-dec" onClick={() => props.updateCart({type: 'DEC', id: props.data.id})}>-</button>
       </div>
     </Control>
   );

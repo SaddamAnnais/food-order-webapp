@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import ListCartItem from "../CartModal/ListCartItem";
 import Button from "../UI/Button";
 
 const Nav = styled.nav`
@@ -51,20 +52,23 @@ const Nav = styled.nav`
     }
   }
 
-  @keyframes animate {
-    from {
-      opacity: 0;
-      transform: translateY(10%);
+  @keyframes beat {
+    0% {
+      transform: none;
     }
-    to {
-      opacity: 1;
+    50% {
+      transform: scale(1.15);
+    }
+    100% {
       transform: none;
     }
   }
 
-  animation-name: ${(props) => props.onclick || " "};
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
+  & .cart-button {
+    animation-name: beat;
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+  }
 `;
 
 const sumCart = (cart) => {
@@ -77,25 +81,44 @@ const sumCart = (cart) => {
 
 const Navbar = (props) => {
   const [numCart, setNumCart] = useState(0);
-  // setNumCart(props.cart.length);
+  const [classNameCartButton, setClassNameCartButton] = useState("");
+  const [cartModalVisibleStatus, setcartModalVisibleStatus] = useState(false);
+
   const num = sumCart(props.cart);
 
   useEffect(() => {
     setNumCart(num);
+    return () => setClassNameCartButton("cart-button");
   }, [num]);
 
+  const cartModalHandler = (event) => {
+    setcartModalVisibleStatus((prevState) => !prevState);
+  };
+
   return (
-    <Nav>
-      <h1>
-        <b>RM YaraSiHot</b>
-      </h1>
-      <ul className="main-nav">
-        <Button className="cart-button" onclick='animate'>
-          <p>🛒 Your Cart</p>
-          <p className="cart-amount">{numCart}</p>
-        </Button>
-      </ul>
-    </Nav>
+    <>
+      <ListCartItem
+        visible={cartModalVisibleStatus}
+        close={cartModalHandler}
+        cart={props.cart}
+        updateCart={(event) => props.updateCart(event)}
+      />
+      <Nav>
+        <h1>
+          <b>RM YaraSiHot</b>
+        </h1>
+        <ul className="main-nav">
+          <Button
+            className={classNameCartButton}
+            key={num}
+            onClick={cartModalHandler}
+          >
+            <p>🛒 Your Cart</p>
+            <p className="cart-amount">{numCart}</p>
+          </Button>
+        </ul>
+      </Nav>
+    </>
   );
 };
 

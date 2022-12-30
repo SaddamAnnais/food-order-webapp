@@ -15,7 +15,7 @@ const Wrapper = styled.div`
 const Header = props => {
   return (
     <Wrapper >
-      <Navbar cart={props.cart}/>
+      <Navbar cart={props.cart} updateCart={(event) => props.updateCart(event)} />
       <About />
     </Wrapper>
   )
