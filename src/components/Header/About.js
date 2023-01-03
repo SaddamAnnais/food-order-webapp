@@ -10,9 +10,9 @@ const About = () => {
   return (
     <Card BGcolor="#343434" color="white" width='480px'>
       <Control>
-        <h1>RM Minang Bu Yara Sihotang</h1>
-        <p>Makanan lezat dan bergizi siap diantar ke kosan anda</p>
-        <p>Terbuat dari bahan-bahan berkualitas</p>
+        <h1>Delicious Food</h1>
+        <p>Delicious and nutritious food is ready to be delivered to you</p>
+        <p>Made from high quality ingredients</p>
       </Control>
     </Card>
   );

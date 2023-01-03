@@ -105,7 +105,7 @@ const Navbar = (props) => {
       />
       <Nav>
         <h1>
-          <b>RM YaraSiHot</b>
+          <b>My Restaurant</b>
         </h1>
         <ul className="main-nav">
           <Button

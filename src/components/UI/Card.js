@@ -13,8 +13,8 @@ const Card = styled.div`
   overflow-y: ${(props) => props.overflow || " "};
   max-height: ${(props) => props.maxHeight || " "};
 
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  /* scrollbar-width: none; Firefox */
+  /* -ms-overflow-style: none; Internet Explorer 10+ */
 
   @media (min-width: 720px) {
     width: ${(props) => props.width || "90%"};

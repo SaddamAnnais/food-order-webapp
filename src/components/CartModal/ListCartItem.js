@@ -7,7 +7,7 @@ import CartItem from "./CartItem";
 
 const Control = styled.div`
   /* z-index: 9; */
-  margin-top: 7em;
+  margin-top: 3.5em;
 
   Card {
     max-height: 50%;
@@ -33,12 +33,12 @@ const Control = styled.div`
     padding: 2em 0;
     text-align: center;
     margin: 0.5em 0;
-    border-bottom: solid .1em #85221b;
+    border-bottom: solid 0.1em #85221b;
   }
-  & .cart-empty {
-    /* margin: 1em 0; */
+  & .order-list {
+    max-height: 30em;
+    overflow-y: auto;
   }
-
 `;
 
 const ListCartItem = (props) => {
@@ -68,30 +68,37 @@ const ListCartItem = (props) => {
   return (
     <Modal visible={props.visible}>
       <Control>
-        <Card width="480px" shadow=" " maxHeight="33em" overflow="scroll">
-          {props.cart.map((cart) => {
-            return (
-              <CartItem
-                data={cart}
-                key={cart.id}
-                updateCart={(event) => props.updateCart(event)}
-              />
-            );
-          })}
-          {props.cart.length !== 0 && <TotalAmountVisible />}
-          {props.cart.length === 0 && <TotalAmountNotVisible />}
+        <Card width="480px" shadow=" " >
+          <div className="order-list">
+            {props.cart.map((cart) => {
+              return (
+                <CartItem
+                  data={cart}
+                  key={cart.id}
+                  updateCart={(event) => props.updateCart(event)}
+                />
+              );
+            })}
+          </div>
 
-          <div className="action-button">
-            <Button
-              BGColor="white"
-              BGColorHover="rgba(221, 221, 221, 1)"
-              color="#85221b"
-              border="1px solid #85221b"
-              onClick={() => props.close()}
-            >
-              Close
-            </Button>
-            <Button onClick={orderHandler}>Order</Button>
+          <div className="bills">
+            {props.cart.length !== 0 && <TotalAmountVisible />}
+            {props.cart.length === 0 && <TotalAmountNotVisible />}
+
+            <div className="action-button">
+              <Button
+                BGColor="white"
+                BGColorHover="rgba(221, 221, 221, 1)"
+                color="#85221b"
+                border="1px solid #85221b"
+                onClick={() => props.close()}
+              >
+                Close
+              </Button>
+              {props.cart.length !== 0 && (
+                <Button onClick={orderHandler}>Order</Button>
+              )}
+            </div>
           </div>
         </Card>
       </Control>
